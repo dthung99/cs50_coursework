@@ -1,0 +1,31 @@
+10 HTML
+    meta
+    link
+    script
+    title
+    div
+    nav
+    a
+    h1
+    h2
+    h4
+    ul
+    li
+    buttion
+    iframe
+
+5 CSS properties
+    min-height
+    display
+    flex-direction
+    margin-top
+    background-color
+    border
+    font-style
+    font-size
+
+JavaScript
+I use it to change the theme of the page (from light to dark mode)
+
+Bootstrap
+I use Bootstrap to design the navigation bar, offcanvas, create website that can be adapted to different window sizes,

@@ -1,0 +1,24 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+  background-color: #4e4792;
+  border: 1px solid #ccc;
+}
+
+#name {
+  font-style: italic;
+}
+
+#change_mode:hover {
+  background-color: #0e4b18;
+}
+
+p {
+  font-size: 1.25em;
+}
+

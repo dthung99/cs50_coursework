@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sell
+{% endblock %}
+
+{% block main %}
+<form action="/sell" method="post">
+    <!-- <div class="mb-3">
+        <input id="symbol" autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol"
+            placeholder="Stock symbol" type="text">
+    </div> -->
+    <div class="mb-3">
+        <select id="mySelect" name="symbol">
+            <option value="">-- Select your stocks --</option>
+            {% for possessed_stock in possessed_stocks %}
+                <option value={{possessed_stock['stock_type' ]}}>{{possessed_stock["stock_type"]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <input id="shares" autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares"
+            placeholder="Stock amount" type="text">
+    </div>
+    <div id="stock information" class="mb-3">
+        <br>
+    </div>
+    <button class="btn btn-primary" type="submit">Sell</button>
+    <script>
+        var symbol = ""
+        var price = ""
+
+        document.getElementById('symbol').addEventListener('keyup', function() {
+            symbol = document.getElementById('symbol').value;
+            shares_f = parseFloat(document.getElementById('shares').value);
+            if (!isNaN(shares_f)) {
+                shares = shares_f;
+            }
+            // var inputValue = event.target.value;
+            fetch('/update_stock_in_buy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'symbol=' + encodeURIComponent(symbol)
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (!(data === null)) {
+                        symbol = data.symbol;
+                        price = data.price;
+                        total_price = parseFloat(price) * shares;
+                        total_price = total_price.toFixed(5);
+                        console.log(total_price);
+                        text = symbol + ": " + price + " USD/share. Total money to gain: " + total_price + " USD.";
+                        document.getElementById("stock information").innerHTML = text;
+                    }
+                });
+        });
+
+        document.getElementById('shares').addEventListener('keyup', function() {
+            symbol = document.getElementById('symbol').value;
+            shares_f = parseFloat(document.getElementById('shares').value);
+            if (!isNaN(shares_f)) {
+                shares = shares_f;
+            }
+            // var inputValue = event.target.value;
+            fetch('/update_stock_in_buy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'symbol=' + encodeURIComponent(symbol)
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (!(data === null)) {
+                        symbol = data.symbol;
+                        price = data.price;
+                        total_price = parseFloat(price) * shares;
+                        total_price = total_price.toFixed(5);
+                        console.log(total_price);
+                        text = symbol + ": " + price + " USD/share. Total money to spend: " + total_price + " USD.";
+                        document.getElementById("stock information").innerHTML = text;
+                    }
+                });
+        });
+
+    </script>
+</form>
+{% endblock %}

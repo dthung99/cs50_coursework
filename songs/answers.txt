@@ -1,0 +1,2 @@
+1. I will calculate the average of 100 audio auras.
+2. I will suggest a weighted average of 100 songs, where the coefficients are determined through RCTs.

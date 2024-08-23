@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Content Search</title>
+  <style>
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    #search-input {
+      padding: 8px 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 300px;
+    }
+
+    #search-results {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #search-results li {
+      padding: 8px;
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul id="search-results"></ul>
+
+  <p>This is some sample text on the page. You can search for keywords within this content.</p>
+  <p>Another paragraph with more information to search through.</p>
+  <p>The final paragraph that you can also search.</p>
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const pageContent = document.body.innerText.toLowerCase();
+
+    searchInput.addEventListener('input', function() {
+      const searchTerm = searchInput.value.toLowerCase();
+      searchResults.innerHTML = '';
+
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      const highlightedContent = pageContent.replace(regex, '<span class="highlight">$1</span>');
+
+      const matches = highlightedContent.split('<span class="highlight">');
+      matches.forEach(match => {
+        if (match.includes('</span>')) {
+          const [highlighted, rest] = match.split('</span>');
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="highlight">${highlighted}</span>${rest}`;
+          searchResults.appendChild(li);
+        } else if (match.trim() !== '') {
+          const li = document.createElement('li');
+          li.textContent = match;
+          searchResults.appendChild(li);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Meta information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Some of the customed styles  -->
+    <link href="/styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>Dang The Hung</title>
+</head>
+
+<body data-bs-theme="dark">
+    <!-- Offcanvas menu -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvas_main">
+        <div class="offcanvas-header">
+            <h1 class="offcanvas-title" id="offcanvasScrollingLabel">Welcome</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <a class="text-decoration-none" href="/index.html">
+                <h2>Home</h2>
+            </a>
+            <a class="text-decoration-none" href="/about/index.html">
+                <h4>About</h4>
+            </a>
+            <a class="text-decoration-none" href="/resume/index.html">
+                <h4>Resume</h4>
+            </a>
+            <a class="text-decoration-none" href="/portfolio/index.html">
+                <h4>Portfolio</h4>
+            </a>
+            <!-- <a class="text-decoration-none" href="#"><h4>Playground</h4></a> -->
+        </div>
+    </div>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+            <!-- Offcanvas menu icon -->
+            <div class="navbar-brand">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvas_main">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <!-- adding main hom navigation bar -->
+            <a class="navbar-brand" href="/index.html">Home</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/index.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/resume/index.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio/index.html">Portfolio</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="playground/index.html">Playground</a>
+                    </li> -->
+                </ul>
+            </div>
+            <button class="btn btn-outline-success" type="submit" id="change_mode">Change Mode</button>
+            <!-- <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+            <script>
+                const button = document.getElementById('change_mode');
+                var body_attribute = document.getElementsByTagName('body')[0]
+                function change_mode() {
+                    if (body_attribute.getAttribute('data-bs-theme')=="dark") {
+                        body_attribute.setAttribute('data-bs-theme', 'light');
+                    } else {
+                        body_attribute.setAttribute('data-bs-theme', 'dark');
+                    }
+
+                }
+                button.addEventListener('click', change_mode);
+            </script>
+        </div>
+    </nav>
+    <nav class="container">
+        <h2>Have a look at my resume.</h2>
+        <iframe src="CV_Hung.pdf" width="100%" height="500px"></iframe>
+    </nav>
+
+    <div class="footer">
+        <div class="container-fluid ">
+            <h4>Get in Touch</h4>
+            <p>
+                LinkedIn: <a href="https://linkedin.com/in/dthung">linkedin.com/in/dthung</a>
+                |
+                GitHub: <a href="https://github.com/dthung99">github.com/dthung99</a> </p>
+            <p>
+                Email: dthung.y17@gmail.com | London, United Kingdom
+            </p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
